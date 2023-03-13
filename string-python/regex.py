@@ -1,9 +1,11 @@
-endereco = "Rua da Flores 72, apartamento 1002, Laranjeiras, Rio de Janeiro, RJ, 23440-120"
-
 import re
 
-padrao = re.compile("[0123456789][0123456789][0123456789][0123456789][0123456789][-][0123456789][0123456789]")
-busca = padra.search(endereco) #retorna o objeto match caso encontre o padrao no parametro
+url = 'https://www.bytebank.com.br/cambio'
 
-if busca:
-    print(busca.group())
+padrao = re.compile('(http(s)?://)?(www.)?bytebank.com(.br)?/cambio')
+match = padrao.match(url)
+
+if not match:
+    raise ValueError("A URL não é válida.")
+
+print("A URL é válida")
